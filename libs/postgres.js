@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const csv = require('fast-csv')
-const { host, port, database, user, password, schema = 'public' } = require('../config/defaultValues')
+const { host, port, database, user, password, schema = 'public', ssl = false } = require('../config/defaultValues')
 
 const pgp = require('pg-promise')({
     capSQL: true
@@ -12,7 +12,8 @@ const pgConfig = {
 	port,
 	database,
 	user,
-	password
+	password,
+	ssl
 }
 
 const db = pgp(pgConfig)
